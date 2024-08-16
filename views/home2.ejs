@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bus Home Page</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/home2.css" />
+  </head>
+  <body>
+    <div id="sidebar" class="sidebar">
+      <a href="#" class="closebtn" onclick="closeSidebar()">&times;</a>
+      <a href="#">Navigate</a>
+      <a href="#">Community</a>
+      <a href="./music/index.html" onclick="songs();">Songs</a>
+      <a href="/admin ">Admin</a>
+      <a href="/mod">Moderator</a>
+      <a href="/review">Reviews</a>
+    </div>
+
+    <button class="openbtn" onclick="openSidebar()" style="z-index: 9">
+      &#9776; Menu
+    </button>
+    <div class="main">
+      <!-- Image Section with Slogans -->
+      <section class="container-fluid p-0">
+        <div class="row no-gutters">
+          <div class="col-md-12 mb-4">
+            <!-- <div class="col-md-6"> -->
+            <div
+              class="image-with-slogan"
+              style="background-image: url('./assets/b1.jpg')"
+            >
+              <div
+                class="slogan text-left"
+                style="color: whitesmoke; padding-top: 90px; padding-left: 70px"
+              >
+                <h2>Experience Tranquility on Wheels</h2>
+                <p>Your Pathway to Peace</p>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-md-6"> -->
+          <!-- <div class="col-md-12 mb-4">
+          <div
+            class="image-with-slogan"
+            style="background-image: url('./assets/b18.jpg')"
+          >
+            <div class="slogan text-right" style="color: black">
+              <h2>Chill with Nature, Travel in Bliss</h2>
+              <p>Where Every Destination is a Sanctuary</p>
+            </div>
+          </div>
+        </div> -->
+        </div>
+      </section>
+
+      <div class="container mt-3">
+        <div class="input-group">
+          <input type="text" id="searchInput" class="form-control" placeholder="Search for a bus...">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" onclick="searchBus()">Search</button>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Available Buses Section -->
+      <section class="container mt-5">
+        <h1 class="text-center mb-4">Available Buses</h1>
+        <div class="row">
+          <% busesArray.forEach(function(bus) { %>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card" data-busid="<%= bus.busId %>">
+              <div class="card-body">
+                <h5 class="card-title"><%= bus.name %></h5>
+                <p class="card-text">Route: <%= bus.route %></p>
+              </div>
+            </div>
+          </div>
+          <% }); %>
+        </div>
+      </section>
+
+      <footer style="margin-top: 1.5rem">
+        <div class="footer-content">
+          <div class="footer-section about">
+            <h1 class="logo-text"><span>BusLink</span></h1>
+            <p>
+              BusLink is a leading provider of bus services, offering a wide
+              range of routes and schedules to meet your travel needs. We pride
+              ourselves on our commitment to safety, reliability, and customer
+              satisfaction.
+            </p>
+            <div class="contact">
+              <span><i class="fas fa-phone"></i> &nbsp; 123-456-7890</span>
+              <span
+                ><i class="fas fa-envelope"></i> &nbsp; info@buslink.com</span
+              >
+            </div>
+            <div class="socials">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          <div class="footer-section links">
+            <h2>Quick Links</h2>
+            <ul>
+              <a href="#"><li>Home</li></a>
+              <a href="/about_us"><li>About</li></a>
+              <li><a href="/faq">Faq</a></li>
+              <a href="#"><li>Contact</li></a>
+            </ul>
+          </div>
+          <div class="footer-section contact-form">
+            <h2>Contact Us</h2>
+            <form>
+              <input
+                type="email"
+                name="email"
+                class="text-input contact-input"
+                placeholder="Your email address..."
+              />
+              <textarea
+                rows="4"
+                name="message"
+                class="text-input contact-input"
+                placeholder="Your message..."
+              ></textarea>
+              <button type="submit" class="btn btn-big contact-btn">
+                <i class="fas fa-envelope"></i>
+                Send
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom" style="color: #ced7e4; font-size: 1.3rem">
+          &copy; BusLink 2023 | Designed by Your
+          <span>Srinu,</span>
+          <span>Surya,</span>
+          <span>Abhi,</span>
+          <span>Sreekanth,</span>
+          <span>Leela</span>
+        </div>
+      </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap JS (optional, for some components) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for redirection -->
+    <script>
+      // Get all elements with the class "card"
+      const busCards = document.querySelectorAll(".card");
+
+      // Add click event listener to each card
+      busCards.forEach((card) => {
+        card.addEventListener("click", () => {
+          // Get the bus ID from the data-busid attribute of the clicked card
+          const busId = card.getAttribute("data-busid");
+
+          // Redirect to the /businfo/:id route with the appropriate ID
+          window.location.href = `/businfo/${busId}`;
+        });
+      });
+
+      function openSidebar() {
+        document.getElementById("sidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "80px";
+        document.querySelector(".openbtn").style.marginLeft = "250px"; // Adjust the margin-left of the button
+      }
+
+      // const cardsContainer = document.querySelector(".cards");
+      // cardsContainer.innerHTML = "";
+
+      function closeSidebar() {
+        document.getElementById("sidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        document.querySelector(".openbtn").style.marginLeft = "20px"; // Reset the margin-left of the button
+      }
+
+      // bus search code 
+      function openSidebar() {
+      document.getElementById("sidebar").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "80px";
+      document.querySelector(".openbtn").style.marginLeft = "250px"; // Adjust the margin-left of the button
+    }
+
+    function closeSidebar() {
+      document.getElementById("sidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+      document.querySelector(".openbtn").style.marginLeft = "20px"; // Reset the margin-left of the button
+    }
+
+    function searchBus() {
+      let input = document.getElementById('searchInput').value.toLowerCase();
+      let buses = document.querySelectorAll('.card');
+
+      let found = false;
+
+      buses.forEach(function(bus) {
+        let busName = bus.querySelector('.card-title').innerText.toLowerCase();
+        let busId = bus.getAttribute('data-busid');
+
+        if (busName.includes(input)) {
+          // If found, redirect to bus info page
+          window.location.href = `/businfo/${busId}`;
+          found = true;
+          return; // Stop further iteration if found
+        }
+      });
+
+      // If not found, alert
+      if (!found) {
+        alert("Bus not found");
+      }
+    }
+    </script>
+  </body>
+</html>

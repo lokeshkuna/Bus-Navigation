@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ PAGE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Work Sans', sans-serif;
+    }
+
+    .faq-heading {
+      border-bottom: 2px solid #272626;
+      padding: 20px 60px;
+    }
+
+    .faq-container {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .hr-line {
+      width: 60%;
+      margin: auto;
+      border-top: 1px solid #ccc;
+    }
+
+    /* Style the buttons that are used to open and close the faq-body */
+    .faq-page {
+      color: #515251;
+      cursor: pointer;
+      padding: 30px 20px;
+      width: 60%;
+      border: none;
+      outline: none;
+      transition: 0.4s;
+      margin: auto;
+      background-color: #fff;
+    }
+
+    .faq-body {
+      margin: auto;
+      width: 50%;
+      padding: 0;
+      display: none; /* Initially hide FAQ body */
+      border-bottom: 1px solid #ccc;
+    }
+
+    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+    .active,
+    .faq-page:hover {
+      background-color: #F9F9F9;
+    }
+
+    /* Style the faq-body panel. Note: hidden by default */
+    .faq-body {
+      padding: 0 18px;
+      background-color: white;
+      overflow: hidden;
+    }
+
+    .faq-page:after {
+      content: '\02795'; /* Unicode character for "plus" sign (+) */
+      font-size: 13px;
+      color: #777;
+      float: right;
+      margin-left: 5px;
+    }
+
+    .active:after {
+      content: "\2796"; /* Unicode character for "minus" sign (-) */
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 class="faq-heading">FAQ'S</h1>
+    <section class="faq-container" id="faq-container">
+      <!-- FAQs will be dynamically generated here -->
+    </section>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+     
+      const faqs = [
+        {
+          question: "What is an FAQ Page?",
+          answer: "An FAQ (Frequently Asked Questions) page is a webpage on a website that provides answers to common questions asked by users or customers. It serves as a resource to address queries, concerns, or doubts that visitors may have regarding the website, its products, or its services."
+        },
+        {
+          question: "Why do you need an FAQ page?",
+          answer: "An FAQ page is essential for several reasons..."
+        },
+        {
+          question: "How does bus tracking work?",
+          answer: "Bus tracking works by using GPS technology installed in buses to determine their real-time location. This information is then transmitted to the website, allowing users to see the live location of buses on a map."
+        },
+        {
+          question: "How accurate is the bus tracking information?",
+          answer: "The accuracy of bus tracking information depends on various factors such as GPS signal strength, network coverage, and data transmission. While we strive to provide the most accurate information possible, occasional discrepancies may occur due to these factors."
+        },
+        {
+          question: "Can I track buses from my mobile phone?",
+          answer: "Yes, our website is mobile-friendly, allowing you to track buses from your smartphone or tablet easily. Simply visit our website on your mobile browser, and you'll have access to the same tracking features as on a desktop."
+        },
+        {
+          question: "How often is the bus tracking information updated?",
+          answer: "The bus tracking information is updated in real-time, meaning you'll see the most up-to-date location of buses on the map."
+        }
+      ];
+
+      const faqContainer = document.getElementById('faq-container');
+      faqs.forEach(faq => {
+        const faqDiv = document.createElement('div');
+        faqDiv.classList.add('faq-item');
+        faqDiv.innerHTML = `
+          <h1 class="faq-page">${faq.question}</h1>
+          <div class="faq-body">
+            <p>${faq.answer}</p>
+          </div>
+          <hr class="hr-line">
+        `;
+        faqContainer.appendChild(faqDiv);
+      });
+
+      // Add event listeners to all FAQ questions
+      const faqPages = document.querySelectorAll('.faq-page');
+      faqPages.forEach(page => {
+        page.addEventListener('click', function() {
+          const body = this.nextElementSibling;
+          this.classList.toggle('active');
+          if (body.style.display === 'block') {
+            body.style.display = 'none';
+          } else {
+            body.style.display = 'block';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

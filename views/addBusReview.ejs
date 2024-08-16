@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Reviews</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>Add Reviews for <%= bus[0].route %></h1>
+      <form
+        id="reviewForm"
+        action="/add/reviews/<%= bus[0]._id %>"
+        method="post"
+      >
+        <div id="reviewsContainer">
+          <!-- Review and rating inputs will be dynamically generated here -->
+        </div>
+        <button type="button" class="btn btn-primary" id="addReview">
+          Add Another Review
+        </button>
+        <button type="submit" class="btn btn-success mt-3">
+          Submit Reviews
+        </button>
+      </form>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#addReview").click(function () {
+          var index = $(".review-group").length + 1;
+          var reviewInput =
+            '<div class="review-group"><div class="form-group"><label for="review' +
+            index +
+            '">Review ' +
+            index +
+            '</label><input type="text" class="form-control" name="reviews" id="review' +
+            index +
+            '" placeholder="Enter your review" required></div>';
+          var ratingInput =
+            '<div class="form-group"><label for="rating' +
+            index +
+            '">Rating ' +
+            index +
+            '</label><input type="number" class="form-control" name="ratings" id="rating' +
+            index +
+            '" placeholder="Enter your rating (1-5)" min="1" max="5" step="0.1" required></div></div>';
+          $("#reviewsContainer").append(reviewInput + ratingInput);
+        });
+      });
+    </script>
+  </body>
+</html>

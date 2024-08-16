@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bus Information</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom styles */
+      body {
+        background-color: #e0f2f1; /* Light Sky Blue */
+        color: #3498db; /* Royal Blue */
+      }
+      .container {
+        padding-top: 50px;
+      }
+      .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        background-color: #fff; /* White */
+      }
+      .card-title {
+        color: #1f6594; /* Teal */
+        font-weight: bold;
+      }
+      .card-subtitle {
+        color: #6c757d; /* Gray */
+      }
+      .map_container {
+        width: 250px;
+      }
+      .card.mt-4 {
+        display: flex; /* Make the card flex container */
+        flex-direction: row; /* Arrange children horizontally */
+      }
+      .map_container,
+      .card-body {
+        flex: 1; /* Equal width for both children */
+      }
+      iframe {
+        margin-right: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-5 text-center">Bus Information</h1>
+      <div class="card mt-4">
+        <div class="card-body" style="font-size: 1rem">
+          <h5 class="card-title">Bus: <%= bus.name %></h5>
+          <h6 class="card-subtitle mb-2">Route: <%= bus.route %></h6>
+          <p class="card-text">Timings: <%= bus.timings %></p>
+          <h6>Reviews:</h6>
+          <% bus.reviews.forEach(function(review) { %>
+          <p>Rating: <%= review.rating %>, Review: <%= review.review %></p>
+          <% }); %>
+          <p>Overall Rating: <%= bus.rating %></p>
+          <a
+            href="/add/reviews/<%= bus._id %>"
+            type="button"
+            class="btn btn-primary"
+            >Add Reviews</a
+          >
+        </div>
+        <div class="map_container">
+          <h5 class="mt-1 text-center">
+            <a href="<%= bus.mapLink %>">Map Link</a>
+          </h5>
+          <iframe
+            src="<%= bus.mapLink %>"
+            width="95%"
+            height="80%"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+surya - surya
+moderator - mod1234
+srinu = srinu
+mod2 -modsrinu
+user - anu@deep.com anudeep
+surya@s.com suryas
+user - sreekanth@sri.com - 1234564
+user - group32@gmail.com - 123456
+
+
+
+tenail to vskp
+
+[
+    {
+        "busId": "66112219ad67cfea5492b3b1",
+        "name": "3500",
+        "route": "Hyd MGBS to Vishakapatnam",
+        "timings": "6:00 AM - 8:00 PM",
+        "reviews": [
+            {
+                "_id": "66176f2a2597630c5b8cb4d4",
+                "rating": 5,
+                "review": "Great service!"
+            },
+            {
+                "_id": "66176f2a2597630c5b8cb4d5",
+                "rating": 4,
+                "review": "Fast and reliable."
+            },
+            {
+                "_id": "66176f2a2597630c5b8cb4d6",
+                "rating": 3,
+                "review": "Comfortable ride."
+            },
+            {
+                "_id": "66176f2a2597630c5b8cb4d7",
+                "rating": 3,
+                "review": "Moderately Clean"
+            }
+        ],
+        "rating": "4.5/5",
+        "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.3786490214215!2d78.03515561543015!3d15.829624989035114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc9f4b6ee1dbb8d%3A0x43aee6dc3d77422a!2sHyderabad!5e0!3m2!1sen!2sin!4v1617952071062!5m2!1sen!2sin"
+    },
+    {
+        "busId": "66112219ad67cfea5492b3b2",
+        "name": "27024",
+        "route": "Ankapalle to Parlakimdi",
+        "timings": "7:00 AM - 9:00 PM",
+        "reviews": [
+            {
+                "_id": "66176f2a2597630c5b8cb4d8",
+                "rating": 4,
+                "review": "Good service."
+            },
+            {
+                "_id": "66176f2a2597630c5b8cb4d9",
+                "rating": 3,
+                "review": "Reliable."
+            },
+            {
+                "_id": "66176f2a2597630c5b8cb4da",
+                "rating": 2,
+                "review": "Needs improvement."
+            },
+            {
+                "_id": "66176f2a2597630c5b8cb4db",
+                "rating": 3,
+                "review": "Moderately Clean"
+            }
+        ],
+        "rating": "3.5/5",
+        "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.3786490214215!2d78.03515561543015!3d15.829624989035114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc9f4b6ee1dbb8d%3A0x43aee6dc3d77422a!2sAnkapalle!5e0!3m2!1sen!2sin!4v1617952071062!5m2!1sen!2sin"
+    },
+    {
+        "busId": "66112219ad67cfea5492b3b3",
+        "name": "24701",
+        "route": "Ramachandrapuram to Vishakapatnam2",
+        "timings": "8:00 AM - 10:00 PM",
+        "reviews": [
+            {
+                "_id": "66176f2a2597630c5b8cb4dc",
+                "rating": 5,
+                "review": "Excellent service!"
+            },
+            {
+                "_id": "66176f2a2597630c5b8cb4dd",
+                "rating": 4,
+                "review": "Very reliable."
+            },
+            {
+                "_id": "66176f2a2597630c5b8cb4de",
+                "rating": 3,
+                "review": "Good ride."
+            },
+            {
+                "_id": "66176f2a2597630c5b8cb4df",
+                "rating": 3,
+                "review": "Moderately Clean"
+            }
+        ],
+        "rating": "4.1",
+        "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.3786490214215!2d78.03515561543015!3d15.829624989035114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc9f4b6ee1dbb8d%3A0x43aee6dc3d77422a!2sRamachandrapuram!5e0!3m2!1sen!2sin!4v1617952071062!5m2!1sen!2sin"
+    },
+    // Add more objects with mapLink field...
+]
+
+
+
+[
+  {
+    "place": "Hyderabad MGBS",
+    "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.3786490214215!2d78.03515561543015!3d15.829624989035114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc9f4b6ee1dbb8d%3A0x43aee6dc3d77422a!2sHyderabad!5e0!3m2!1sen!2sin!4v1617952071062!5m2!1sen!2sin"
+  },
+  {
+    "place": "Ankapalle Bus Stand",
+    "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.00202020202!2d83.02808333333333!3d17.67638888888888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a197888c88e190f!2sAnkapalle!5e0!3m2!1sen!2sin!4v1617952071062!5m2!1sen!2sin"
+  },
+  {
+    "place": "Ramachandrapuram Bus Stand",
+    "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15071.5200220219!2d80.33588888888889!3d16.843472222222223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19ab310a9c351f!2sRamachandrapuram!5e0!3m2!1sen!2sin!4v1617952071062!5m2!1sen!2sin"
+  },
+  {
+    "place": "Kangiri Bus Stand",
+    "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15678.252441406066!2d78.10222222222221!3d13.573055555555556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf99d0f688998f!2sGangiredduguru!5e0!3m2!1sen!2sin!4v1617952071062!5m2!1sen!2sin"
+  },
+  {
+    "place": "Kurnool Bus Stand",
+    "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d156481.18202000002!2d78.03277784999999!3d15.8700003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf9d9868b68e0f:0x8e525f0a118c2b10!6zOA==?height=400&width=600
+"
+  }
+  {
+    "place": "Tenali Bus Stand",
+    "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18335.024414062498!2d80.66222222222223!3d16.881388888888886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a197c190b10f20f!2sTenali!5e0!3m2!1sen!2sin!4v1617952071062!5m2!1sen!2sin"
+  },
+  {
+    "place": "Machilipatnam Bus Stand",
+    "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17942.153569335937!2d80.94138888888889!3d16.156388888888889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1982c8ac2e1f1f!2sMachilipatnam!5e0!3m2!1sen!2sin!4v1617952071062!5m2!1sen!2sin"
+  },
+  {
+    "place": "Vijayawada Bus Stand",
+    "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18102.5107421875!2d80.84638888888889!3d16.50611111111111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1977041771d10f!2sVijayawada!5e0!3m2!1sen!2sin!4v1617952071062!5m2!1sen!2sin"
+  }
+]

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Signup</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Custom CSS -->
+    <style>
+      /* Custom styles based on the "Tropical Paradise" color palette */
+      body {
+        background-color: #f3f7fa; /* Light Turquoise */
+        color: #1abc9c; /* Turquoise */
+      }
+
+      .card {
+        background-color: #1abc9c; /* Turquoise */
+        border: none;
+      }
+
+      .card-header {
+        background-color: #3498db; /* Royal Blue */
+        color: #f3f7fa; /* Light Turquoise */
+      }
+
+      .form-control {
+        background-color: #f3f7fa; /* Light Turquoise */
+        border: 1px solid #1abc9c; /* Turquoise */
+        color: #1abc9c; /* Turquoise */
+      }
+
+      .btn-primary {
+        background-color: #f1c40f; /* Light Orange */
+        border: none;
+      }
+
+      .btn-primary:hover {
+        background-color: #e67e22; /* Deep Orange */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="text-center">Create Admin</h3>
+            </div>
+            <div class="card-body">
+              <!-- Admin Signup Form -->
+              <form action="/create/admin" method="POST">
+                <div class="form-group" style="color: black">
+                  <label for="username">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    name="username"
+                    required
+                  />
+                </div>
+                <div class="form-group" style="color: black">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-block"
+                  style="color: black"
+                >
+                  Sign Up
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

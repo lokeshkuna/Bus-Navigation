@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="signin_signup.css" />
+    <title>signin-signup</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="signin-signup">
+        <form action="/login" method="POST" class="sign-in-form">
+          <h2 class="title">Sign in</h2>
+          <!-- <div class="input-field">
+            <i id="user" class="fas fa-user"></i>
+            <input type="text" placeholder="Username" id="username"  name="description"/>
+          </div> -->
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" placeholder="Email" required />
+            <!-- <div class="email error">email error</div> -->
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input
+              type="password"
+              id="password1"
+              name="password"
+              placeholder="Password"
+              required
+            />
+            <span class="eye" onclick="myEye1()">
+              <i id="hide1" class="fas fa-eye"></i>
+              <i id="hide2" class="fas fa-eye-slash"></i>
+            </span>
+            <!-- <div class="password error">kefn</div> -->
+            <script>
+              function myEye1() {
+                var x = document.getElementById("password1");
+                var y = document.getElementById("hide1");
+                var z = document.getElementById("hide2");
+
+                if (x.type == "password") {
+                  x.type = "text";
+                  y.style.display = "block";
+                  z.style.display = "none";
+                } else {
+                  x.type = "password";
+                  y.style.display = "none";
+                  z.style.display = "block";
+                }
+              }
+            </script>
+          </div>
+          <input type="submit" value="Login" class="btn" />
+          <p class="social-text">Or Sign in with social platform</p>
+          <div class="social-media">
+            <a href="#" class="social-icon">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="" class="social-icon">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+          <p class="account-text">
+            Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a>
+          </p>
+        </form>
+        <form action="/signup" method="POST" class="sign-up-form">
+          <h2 class="title">Sign up</h2>
+          <!-- <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Username" />
+          </div> -->
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" placeholder="Email" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input
+              type="password"
+              id="password2"
+              name="password"
+              placeholder="Password"
+              required
+            />
+            <span class="eye" onclick="myEye()">
+              <i id="hide3" class="fas fa-eye"></i>
+              <i id="hide4" class="fas fa-eye-slash"></i>
+            </span>
+
+            <script>
+              function myEye() {
+                var x = document.getElementById("password2");
+                var y = document.getElementById("hide3");
+                var z = document.getElementById("hide4");
+
+                if (x.type == "password") {
+                  x.type = "text";
+                  y.style.display = "block";
+                  z.style.display = "none";
+                } else {
+                  x.type = "password";
+                  y.style.display = "none";
+                  z.style.display = "block";
+                }
+              }
+            </script>
+          </div>
+          <input type="submit" value="signup" class="btn" />
+          <p class="social-text">Or Sign in with social platform</p>
+          <div class="social-media">
+            <a href="#" class="social-icon">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="" class="social-icon">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+          <p class="account-text">
+            Already have an account? <a href="#" id="sign-in-btn2">Sign in</a>
+          </p>
+        </form>
+      </div>
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>Member of Brand?</h3>
+            <p>
+              Enhance your travel experience with personalized bus tracking
+              features.Enjoy seamless navigation with our advanced bus tracking
+              website. Already have an account?
+            </p>
+            <button class="btn2" id="sign-in-btn">Sign in</button>
+          </div>
+          <img
+            src="./assets/signup 2.png"
+            alt="sign up image"
+            class="image"
+            style="margin-top: -7vh; z-index: -1"
+          />
+        </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h3 style="margin-top: 2vh">New to Brand?</h3>
+            <p>
+              Discover the ease of tracking buses in real-time as a new
+              member.Join our community for instant access to bus tracking
+              services. Don't have an account?
+            </p>
+            <button class="btn2" id="sign-up-btn">Sign up</button>
+          </div>
+          <img
+            src="./assets/signin 2.png"
+            alt="bus image"
+            class="image"
+            style="margin-top: -7vh; z-index: -1"
+          />
+        </div>
+      </div>
+    </div>
+    <script src="signin_signup.js"></script>
+    <!-- <script>
+      const signup = document.querySelector(".sign-up-form");
+      signup.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const email = signup.email;
+        const password = signup.password;
+        console.log(email, password);
+
+        try {
+          const res = await fetch("/signup", {
+            method: "POST",
+            body: JSON.stringify({ email, password }),
+            Headers: { "Content/type": "application/json" },
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    </script> -->
+  </body>
+</html>

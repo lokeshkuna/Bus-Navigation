@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus Tracking Website Reviews</title>
+  <!-- Font Awesome CDN link -->
+  <script src="https://kit.fontawesome.com/c73af37b9e.js" crossorigin="anonymous"></script>
+  <style>
+    .review {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+    .review h3 {
+      margin-bottom: 5px;
+    }
+    .bus-code {
+      display: inline-block;
+      background-color: #f0f0f0;
+      padding: 3px 6px;
+      border-radius: 3px;
+      margin-right: 5px;
+    }
+    .rating {
+      margin-top: 10px;
+    }
+    .star-rating {
+      font-size: 20px;
+      color: gold;
+    }
+    .emoji-rating {
+      font-size: 20px;
+    }
+    .key-points p {
+      margin: 5px 0;
+    }
+    .positive-point {
+      color: green;
+    }
+    .negative-point {
+      color: red;
+    }
+  </style>
+  <link rel="stylesheet" href="/review_style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Bus Tracking Website Reviews</h1>
+ 
+    
+    <!-- Call-to-Action -->
+    <a href="#review-form" class="cta-link">Leave a Review</a>
+
+    <!-- Review Form -->
+    <div id="review-form" class="review-form">
+      <h2>Leave a Review</h2>
+      <form action="/review/submit" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email (optional)">
+        <input type="text" name="title" placeholder="Review Title" required>
+        <!-- <input type="text" name="description" placeholder="Review Title" > -->
+        <textarea name="comment" placeholder="Your Review" required></textarea>
+        <div class="rating">
+          <label for="rating">Rating:</label>
+          <select name="rating" id="rating" required>
+            <option value="5">⭐⭐⭐⭐⭐</option>
+            <option value="4">⭐⭐⭐⭐</option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="2">⭐⭐</option>
+            <option value="1">⭐</option>
+          </select>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <!-- Suggestions Form -->
+    <div class="suggestion-form">
+      <h2>Have any suggestions?</h2>
+      <form action="/submitSuggestion" method="POST">
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="suggestion" placeholder="Your Suggestions" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+   
+    <div class="search-container" style="margin-left: 20rem;">
+      <input type="text" id="searchInput" placeholder="Search by bus code..." style="height: 2rem; width: 27rem;">
+      <button onclick="searchReviews()">Search</button>
+    </div>
+
+    <!-- Reviews -->
+    <h2>Recent Reviews</h2>
+    <% if (reviews.length > 0) { %>
+      <div class="review-container">
+        <% reviews.forEach(review => { %>
+          <div class="review" data-time="<%= review.createdAt %>">
+        <!-- User Icon and Name -->
+        <h3><i class="fas fa-user-circle"></i> <%= review.name %> 
+          <% if(review.busCode) { %>
+            (Bus Code: <%= review.busCode %>)
+          <% } %>
+        </h3>
+            <div class="bus-codes">
+              <% const busCodes = ['1', '2', '3', '4', '5', '6', '7', '8','0']; %>
+              <% busCodes.forEach(code => { %>
+                <% if (review.comment && review.comment.includes(code)) { %>
+                  <span class="bus-code">Bus Code: <%= code %></span>
+                <% } %>
+              <% }); %>
+            </div>
+            <p><%= review.title %></p>
+            <p><%= review.comment %></p> <!-- Display the review comment -->
+            <div class="rating">
+              <!-- Star Rating -->
+              <span class="star-rating">
+                <% for (let i = 0; i < review.rating; i++) { %>
+                  ⭐
+                <% } %>
+              </span>
+              <!-- Emoji Rating -->
+              <% switch (review.rating) { 
+                case 1: %>
+                  <span class="emoji-rating">&#128577;</span>
+                  <% break;
+                case 2: %>
+                  <span class="emoji-rating">&#128528;</span>
+                  <% break;
+                case 3: %>
+                  <span class="emoji-rating">&#128578;</span>
+                  <% break;
+                case 4: %>
+                  <span class="emoji-rating">&#128578;</span>
+                  <% break;
+                case 5: %>
+                  <span class="emoji-rating">&#128513;</span>
+                  <% break;
+              } %>
+           
+           
+              <!-- Key Points -->
+              <div class="key-points">
+                <%
+const positiveKeywords = [
+  'super', 'like', 'nice', 'beautiful', 'great', 'excellent', 'efficient', 
+  'accurate', 'convenient', 'easy', 'fast', 'helpful', 'reliable', 'smooth', 
+  'quick', 'pleasant', 'impressive', 'user-friendly', 'modern', 'innovative', 
+  'responsive', 'informative', 'useful', 'advanced', 'organized', 'effective', 
+  'timely', 'satisfactory', 'comfortable', 'clean', 'safe', 'enjoyable', 
+  'luxurious', 'spacious', 'well-maintained', 'professional', 'courteous', 
+  'friendly', 'polite', 'attentive', 'responsive', 'exceptional', 'stellar', 
+  'fantastic', 'outstanding', 'superb', 'top-notch', 'premium', 'flawless', 
+  'perfect', 'exemplary', 'wonderful', 'splendid', 'delightful', 'amazing', 
+  'terrific', 'brilliant', 'awesome', 'fabulous', 'marvelous', 'phenomenal', 
+  'impeccable', 'elite', 'first-class', 'world-class', 'unbeatable', 
+  'remarkable', 'stunning', 'jaw-dropping', 'mind-blowing',  
+  'breathtaking', 'unforgettable', 'exhilarating', 'exceptional', 'unique', 
+  'remarkable', 'unparalleled', 'exceptional', 'extraordinary', 'superior', 
+  'amazing', 'remarkable', 'unbelievable', 'astonishing', 'incredible', 
+  'unreal', 'astonishing', 'mind-boggling', 'unfathomable', 'jaw-dropping', 
+  'stupefying', 'awe-inspiring', 'mind-blowing', 'astonishing'
+];
+
+const negativeKeywords = [
+  'worst', 'poor', 'bad', 'uncomfortable', 'disappointing', 'late', 
+  'inconvenient', 'difficult', 'confusing', 'complicated', 'frustrating', 
+  'annoying', 'slow', 'unreliable', 'inaccurate', 'unresponsive', 'outdated', 
+  'buggy', 'glitchy', 'cumbersome', 'clunky', 'inefficient', 'irritating', 
+  'dreadful', 'tedious', 'chaotic', 'unorganized', 'unsatisfactory', 'unsafe', 
+  'dirty', 'cramped', 'unpleasant', 'unhygienic', 'stale', 'dilapidated', 
+  'shabby', 'unprofessional', 'rude', 'impolite', 'unhelpful', 'indifferent', 
+  'negligent', 'disorganized', 'chaotic', 'unreliable', 'inconsistent', 
+  'unpredictable', 'lousy', 'terrible', 'horrible', 'awful', 'disgusting', 
+  'abysmal', 'atrocious', 'appalling', 'repulsive', 'revolting', 'vile', 
+  'nasty', 'putrid', 'hideous', 'horrid', 'grotesque', 'repugnant', 
+  'offensive', 'displeasing', 'unacceptable', 'subpar', 'unsatisfactory', 
+  'inadequate', 'mediocre', 'inferior', 'underwhelming', 'lame', 'pathetic', 
+  'weak', 'shoddy', 'crappy', 'pitiful', 'miserable', 'unsuitable', 
+  'disappointing', 'underwhelming', 'unimpressive', 'insufficient', 'disastrous', 
+  'poorly', 'badly', 'awfully', 'horribly', 'terribly', 'disgustingly', 
+  'inexcusably', 'unforgivably', 'horrendously', 'abominably', 'disgracefully', 
+  'unbelievably', 'absolutely', 'utterly', 'totally', 'completely', 'entirely', 
+  'wholly', 'fully', 'thoroughly', 'absolutely', 'outrageously', 'incredibly', 
+  'unspeakably', 'unthinkably', 'inconceivably', 'unbelievably', 'unimaginably', 
+  'incomprehensibly', 'impossibly', 'unthinkably', 'preposterously', 'ludicrously', 
+  'ridiculously', 'insanely', 'crazily', 'madly', 'wildly', 'absurdly', 'utterly', 
+  'completely', 'entirely', 'wholly', 'totally', 'thoroughly'
+]; %>
+ <% positiveKeywords.forEach(keyword => { %>
+                  <% if (review.comment && review.comment.toLowerCase().includes(keyword)) { %> <!-- Check if review.comment exists -->
+                    <p><span class="positive-point"><i class="fas fa-check"></i> <%= keyword %></span></p>
+                  <% } %>
+                <% }); %>
+                <% negativeKeywords.forEach(keyword => { %>
+                  <% if (review.comment && review.comment.toLowerCase().includes(keyword)) { %> <!-- Check if review.comment exists -->
+                    <p><span class="negative-point"><i class="fas fa-times"></i> <%= keyword %></span></p>
+                  <% } %>
+                <% }); %>
+                
+              </div>
+              
+                <!-- Elapsed Time -->
+                <div class="created-at">
+                  <% 
+                  // Calculate elapsed time in minutes
+                      const currentTime = new Date();
+                      const ISTOffset = 5.5 * 60 * 60 * 1000; // Offset in milliseconds
+                      const currentTimeIST = new Date(currentTime.getTime() + ISTOffset);
+
+                      const createdAtTime = new Date(review.createdAt);
+                      const createdAtTimeIST = new Date(createdAtTime.getTime() + ISTOffset);
+
+                      const elapsedTime = Math.floor((currentTimeIST - createdAtTimeIST) / (1000 * 60)) + 330;
+                    %>
+                    <p class="elapsed-time" style="font-size: smaller; color: #888;">Added <%= elapsedTime %> minutes ago</p>
+
+                </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% } else { %>
+      <p>No reviews yet.</p>
+    <% } %>
+  </div>
+  
+  <script>
+    function searchReviews() {
+      var input, filter, reviewContainer, reviews, review, i, busCode;
+      input = document.getElementById("searchInput");
+      if (!input) {
+        console.error("Search input element not found!");
+        return;
+      }
+      filter = input.value.trim().toUpperCase();
+      reviewContainer = document.getElementsByClassName("review-container")[0];
+      if (!reviewContainer) {
+        console.error("Review container not found!");
+        return;
+      }
+      reviews = reviewContainer.getElementsByClassName("review");
+  
+      for (i = 0; i < reviews.length; i++) {
+        review = reviews[i];
+        busCode = review.querySelector('.bus-codes .bus-code').innerText;
+        if (!busCode) {
+          console.error("Bus code element not found for a review!");
+          continue;
+        }
+        if (filter && busCode.toUpperCase() === filter) {
+          reviews[i].style.display = ""; // Display the review if it matches the bus code
+        } else {
+          reviews[i].style.display = "none"; // Hide the review if it doesn't match the bus code
+        }
+      }
+    }
+  </script>
+</body>
+</html>

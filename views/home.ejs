@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/faviconx/1.0.1/faviconx-min.js"
+      integrity="sha512-3kfyqP98yizPZDXvUcMJWLIVUWT7THRf7TC0Aw//CJiNlL0ZZR6KVU305WEWD4YD9yCc8cEDEzKW/PHuYeBvaw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link rel="stylesheet" href="./home.css" />
+  </head>
+  <body>
+    <div id="sidebar" class="sidebar">
+      <a href="#" class="closebtn" onclick="closeSidebar()">&times;</a>
+      <a href="#">Navigate</a>
+      <a href="#">Community</a>
+      <a href="./music/index.html" onclick="songs();">Songs</a>
+      <a href="/admin" onclick="songs();">Admin</a>
+      <a href="/mod" onclick="songs();">Moderator</a>
+      <a href="/review" onclick="songs();">Review</a>
+    </div>
+    <div id="main">
+      <button class="openbtn" onclick="openSidebar()">&#9776; Menu</button>
+
+      <div class="container">
+        <h1>Track your bus.</h1>
+        <button id="showBusesButton">Buses</button>
+
+        <input type="text" id="searchInput" placeholder="Search for a bus..." />
+        <button id="searchButton">Search</button>
+
+        <!-- all the fetched buses will render here -->
+
+        <!-- <ul class="cards"></ul> -->
+        <ul class="cards">
+          <% busesArray.forEach(function(bus) { %>
+          <li class="card" data-busid="<%= bus.busId %>">
+            <span class="bus-name">Bus: <%= bus.name %></span>
+            <span class="bus-route">Route: <%= bus.route %></span>
+          </li>
+          <% }); %>
+        </ul>
+
+        <!-- Add this right after the <ul class="cards"> in your HTML -->
+        <!-- <div
+          id="busInfo"
+          class="bus-info-container"
+          style="display: none; margin: 1rem"
+        >
+          <h2 id="busName"></h2>
+          <p id="busRoute"></p>
+          <p id="busTimings"></p>
+          <div class="reviews">
+            <h3>Reviews</h3>
+            <div id="busReviews"></div>
+          </div>
+          <div class="rating">
+            <h3>Rating</h3>
+            <p id="busRating"></p>
+          </div>
+        </div> -->
+      </div>
+
+      <footer style="margin-top: 1.5rem">
+        <div class="footer-content">
+          <div class="footer-section about">
+            <h1 class="logo-text"><span>BusLink</span></h1>
+            <p>
+              BusLink is a leading provider of bus services, offering a wide
+              range of routes and schedules to meet your travel needs. We pride
+              ourselves on our commitment to safety, reliability, and customer
+              satisfaction.
+            </p>
+            <div class="contact">
+              <span><i class="fas fa-phone"></i> &nbsp; 123-456-7890</span>
+              <span
+                ><i class="fas fa-envelope"></i> &nbsp; info@buslink.com</span
+              >
+            </div>
+            <div class="socials">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          <div class="footer-section links">
+            <h2>Quick Links</h2>
+            <ul>
+              <a href="#"><li>Home</li></a>
+              <a href="#"><li>About</li></a>
+              <a href="#"><li>Services</li></a>
+              <a href="#"><li>Contact</li></a>
+            </ul>
+          </div>
+          <div class="footer-section contact-form">
+            <h2>Contact Us</h2>
+            <form>
+              <input
+                type="email"
+                name="email"
+                class="text-input contact-input"
+                placeholder="Your email address..."
+              />
+              <textarea
+                rows="4"
+                name="message"
+                class="text-input contact-input"
+                placeholder="Your message..."
+              ></textarea>
+              <button type="submit" class="btn btn-big contact-btn">
+                <i class="fas fa-envelope"></i>
+                Send
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom" style="color: #ced7e4; font-size: 1.3rem">
+          &copy; BusLink 2023 | Designed by Your
+          <span>Srinu,</span>
+          <span>Surya,</span>
+          <span>Abhi,</span>
+          <span>Sreekanth,</span>
+          <span>Leela</span>
+        </div>
+      </footer>
+    </div>
+
+    <!-- <py-script> print("hello from py")</py-script> -->
+
+    <script src="./home.js"></script>
+  </body>
+</html>

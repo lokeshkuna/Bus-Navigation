@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Moderator</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Custom CSS -->
+    <style>
+      /* Custom styles based on the new color scheme */
+      body {
+        background-color: #034e30; /* Light Gray */
+        color: #2ecc71; /* Emerald Green */
+        padding-top: 56px; /* Set padding-top to accommodate fixed navbar */
+      }
+
+      .navbar {
+        background-color: #1abc9c; /* Teal */
+      }
+
+      .navbar-brand {
+        color: #ffffff; /* White */
+      }
+
+      .navbar-dark .navbar-nav .nav-link {
+        color: rgba(255, 255, 255, 0.5); /* Lighter White */
+      }
+
+      .navbar-dark .navbar-nav .nav-link:hover {
+        color: rgba(255, 255, 255, 0.75); /* Even Lighter White on Hover */
+      }
+
+      .card-header {
+        background-color: #2ecc71; /* Emerald Green */
+        color: #ffffff; /* White */
+      }
+
+      .section-title {
+        margin-bottom: 20px;
+      }
+
+      /* Success message style */
+      .success-message {
+        background-color: #2ecc71; /* Emerald Green */
+        color: #ffffff; /* White */
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+        display: none; /* Initially hide the message */
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Edit Moderator</a>
+      </div>
+    </nav>
+    <div class="container">
+      <div style="height: 1.2rem"></div>
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="card mt-4">
+            <div class="card-header">
+              <h5 class="card-title">Edit Moderator</h5>
+            </div>
+            <div class="card-body">
+              <!-- Moderator Edit Form -->
+              <form
+                action="/update/moderator/<%= moderator[0]._id %>"
+                method="POST"
+                id="editForm"
+              >
+                <!-- Add a hidden input field to override the method -->
+                <!-- <input type="hidden" name="_method" value="PUT" /> -->
+                <!-- Rest of your form elements -->
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    name="username"
+                    value="<%= moderator[0].username %>"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    required
+                  />
+                </div>
+                <!-- Add other moderator fields here -->
+                <button type="submit" class="btn btn-primary">
+                  Save Changes
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

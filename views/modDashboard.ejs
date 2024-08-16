@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moderator Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <style>
+      /* Custom styles based on the selected color scheme */
+      body {
+        background-color: #2f2fa2; /* Dark Navy Blue */
+        color: #f39c12; /* White */
+        padding-top: 56px; /* Set padding-top to accommodate fixed navbar */
+      }
+      a {
+        height: 5vh;
+      }
+
+      .navbar {
+        /* background-color: #2c3e50; Midnight Blue */
+        background-color: #553d67; /* Midnight Blue */
+      }
+
+      .navbar-brand {
+        /* color: #ffffff; White */
+        color: #34495e;
+      }
+      .navbar-nav {
+        color: aliceblue;
+      }
+
+      .navbar-dark .nav-link {
+        /* color: rgba(255, 255, 255, 0.5); Lighter White */
+        color: #34495e; /* Lighter White */
+      }
+
+      .navbar-dark .navbar-nav .nav-link:hover {
+        color: rgba(255, 255, 255, 0.75); /* Even Lighter White on Hover */
+      }
+
+      .card-header {
+        background-color: #f64c72; /* Dark Navy Blue */
+        color: #ffffff; /* White */
+      }
+
+      .section-title {
+        margin-bottom: 20px;
+      }
+
+      /* Style for the Edit buttons */
+      .edit-btn {
+        margin-left: auto; /* Push the button to the right */
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Moderator Dashboard</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="row nav-item">
+              <a class="nav-link" href="#"
+                >Welcome, <%= currentMod[0].username %></a
+              >
+              <a href="/logout/mod" class="btn btn-sm btn-dark logout-btn"
+                >Logout</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <!-- Admin Section -->
+      <div style="height: 1.2rem"></div>
+      <div class="row">
+        <div class="col-md-12">
+          <div
+            class="card mb-4"
+            style="
+              border-top-left-radius: 30px;
+              border-top-right-radius: 30px;
+              border-bottom-right-radius: 30px;
+              border-bottom-left-radius: 30px;
+            "
+          >
+            <div
+              class="card-header"
+              style="
+                border-top-left-radius: 30px;
+                border-top-right-radius: 30px;
+              "
+            >
+              <h5 class="card-title">Admins (<%= adminData.length %>)</h5>
+            </div>
+            <div
+              class="card-body"
+              style="
+                color: #553d67;
+                background-color: #f1f5f8;
+                border-bottom-right-radius: 30px;
+                border-bottom-left-radius: 30px;
+              "
+            >
+              <div class="section-title">Admins</div>
+              <% adminData.forEach((admin, index) => { %>
+              <div class="admin-item d-flex">
+                <div>
+                  <p><strong>#<%= index + 1 %></strong></p>
+                  <p><strong>Username:</strong> <%= admin.username %></p>
+                  <p><strong>Password:</strong> <%= admin.password %></p>
+                  <p><strong>Role:</strong> <%= admin.role %></p>
+                  <p><strong>Created At:</strong> <%= admin.createdAt %></p>
+                </div>
+                <!-- <a
+                  href="/admin/<%= admin.id %>"
+                  class="btn btn-sm btn-info edit-btn"
+                  >Edit</a
+                > -->
+              </div>
+              <% }); %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Moderator Section -->
+      <div class="row">
+        <div class="col-md-12">
+          `
+          <div
+            class="card mb-4"
+            style="
+              border-top-left-radius: 30px;
+              border-top-right-radius: 30px;
+              border-bottom-right-radius: 30px;
+              border-bottom-left-radius: 30px;
+            "
+          >
+            <div
+              class="card-header"
+              style="
+                border-top-left-radius: 30px;
+                border-top-right-radius: 30px;
+              "
+            >
+              <h5 class="card-title">
+                Moderators (<%= moderatorData.length %>)
+              </h5>
+            </div>
+            <div
+              class="card-body"
+              style="
+                /* color: #34495e; */
+                color: BLACK;
+                background-color: burlywood;
+                border-bottom-right-radius: 30px;
+                border-bottom-left-radius: 30px;
+              "
+            >
+              <div class="section-title">Moderators</div>
+              <% moderatorData.forEach((moderator, index) => { %>
+              <div class="moderator-item d-flex">
+                <div>
+                  <p><strong>#<%= index + 1 %></strong></p>
+                  <p><strong>Username:</strong> <%= moderator.username %></p>
+                  <p><strong>Password:</strong> <%= moderator.password %></p>
+                  <p><strong>Role:</strong> <%= moderator.role %></p>
+                  <p><strong>Created At:</strong> <%= moderator.createdAt %></p>
+                </div>
+                <!-- <a
+                  href="/update/Moderator/<%= moderator.id %>"
+                  class="btn btn-sm btn-info edit-btn"
+                  >Edit</a
+                > -->
+              </div>
+              <% }); %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Users Section -->
+      <div class="row">
+        <div class="col-md-12">
+          <div
+            class="card mb-4"
+            style="
+              border-top-left-radius: 30px;
+              border-top-right-radius: 30px;
+              border-bottom-right-radius: 30px;
+              border-bottom-left-radius: 30px;
+            "
+          >
+            <div
+              class="card-header"
+              style="
+                border-top-left-radius: 30px;
+                border-top-right-radius: 30px;
+              "
+            >
+              <h5 class="card-title">Users (<%= userData.length %>)</h5>
+            </div>
+            <div
+              class="card-body"
+              style="
+                color: #34495e;
+                border-bottom-right-radius: 30px;
+                border-bottom-left-radius: 30px;
+              "
+            >
+              <div class="section-title">Users</div>
+              <% userData.forEach((user, index) => { %>
+              <div class="user-item d-flex">
+                <div>
+                  <p><strong>#<%= index + 1 %></strong></p>
+                  <p><strong>Email:</strong> <%= user.email %></p>
+                  <p><strong>Password:</strong> <%= user.password %></p>
+                  <p><strong>Role:</strong> <%= user.role %></p>
+                </div>
+                <a
+                  href="/update/user/<%= user.id %>"
+                  class="btn btn-sm btn-info edit-btn"
+                  >Edit</a
+                >
+              </div>
+              <% }); %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bus Section -->
+      <div class="row">
+        <div class="col-md-12">
+          <div
+            class="card mb-4"
+            style="
+              border-top-left-radius: 30px;
+              border-top-right-radius: 30px;
+              border-bottom-right-radius: 30px;
+              border-bottom-left-radius: 30px;
+            "
+          >
+            <div
+              class="card-header"
+              style="
+                border-top-left-radius: 30px;
+                border-top-right-radius: 30px;
+              "
+            >
+              <h5 class="card-title">Buses (<%= buses.length %>)</h5>
+              <div class="col-md-12 text-right" style="margin-top: -2rem">
+                <!-- Add Admins Link -->
+                <h6>
+                  <a href="/add/bus" class="btn btn-primary">Add Buses</a>
+                </h6>
+              </div>
+            </div>
+            <div
+              class="card-body"
+              style="
+                color: #34495e;
+                border-bottom-left-radius: 30px;
+                border-bottom-right-radius: 30px;
+              "
+            >
+              <div class="section-title">Buses</div>
+              <% buses.forEach((bus, index) => { %>
+              <div class="bus-item d-flex">
+                <div>
+                  <p><strong>#<%= index + 1 %></strong></p>
+                  <p><strong>Name:</strong> <%= bus.name %></p>
+                  <p><strong>Route:</strong> <%= bus.route %></p>
+                  <p><strong>Timings:</strong> <%= bus.timings %></p>
+                  <p><strong>Overall Rating:</strong> <%= bus.rating %></p>
+                  <!-- Render reviews here -->
+                  <div class="reviews">
+                    <strong> <u> Reviews :</u></strong> <%
+                    bus.reviews.forEach(review => { %>
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="review">
+                          <p><strong>Rating:</strong> <%= review.rating %></p>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="review">
+                          <p><strong>Review:</strong> <%= review.review %></p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <% }); %>
+                  </div>
+                </div>
+                <a
+                  href="/update/bus/<%= bus.busId %>"
+                  class="btn btn-sm btn-info edit-btn"
+                  >Edit</a
+                >
+              </div>
+              <% }); %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
