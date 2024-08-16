@@ -10,7 +10,7 @@ const app = express();
 app.use(express.static("public"));
 const database_url =
   process.env.mongo_url ||
-  "mongodb+srv://captain-marvel:L8K6IMUzDlQZw4pC@mern-project-1.qyj0fdm.mongodb.net/Bus-M";
+  "mongodb+srv://captain-marvel:L8K6IMUzDlQZw4pC@mern-project-1.qyj0fdm.mongodb.net/Bus-M`";
 const PORT = process.env.PORT || 3000;
 
 // middleware
